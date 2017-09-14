@@ -10,10 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170912212058) do
+ActiveRecord::Schema.define(version: 20170914004702) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "boardgames", force: :cascade do |t|
+    t.text "title"
+    t.text "genre"
+    t.text "publisher"
+    t.text "player_count"
+    t.integer "duration"
+    t.decimal "msrp", precision: 6, scale: 2
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.integer "rating", null: false
+    t.text "comment"
+    t.integer "review_score", default: 0
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
