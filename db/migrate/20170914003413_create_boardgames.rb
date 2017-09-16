@@ -7,6 +7,7 @@ class CreateBoardgames < ActiveRecord::Migration[5.1]
       t.text :player_count
       t.integer :duration
       t.decimal  :msrp, precision: 6, scale: 2
+      t.belongs_to :user
     end
   end
 end

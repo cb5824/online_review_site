@@ -1,0 +1,10 @@
+<h1><%= @boardgame.title %></h1>
+<ul>
+  <li>Genre: <%= @boardgame.genre %></li>
+  <li>Publisher: <%= @boardgame.publisher %></li>
+  <li>Player Count: <%= @boardgame.player_count %></li>
+  <li>Duration: <%= @boardgame.duration %></li>
+  <li>Price: <%= @boardgame.msrp %></li>
+  <li>Submitted by: <%= @boardgame.user.username %></li>
+</ul>
+<a href=<%= edit_boardgame_path %>>Edit this game</a>

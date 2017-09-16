@@ -1,0 +1,47 @@
+<h1>Edit game details below:</h1>
+<%= form_for(@boardgame) do |f| %>
+  <div class="field">
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </div>
+
+  <div class="field">
+  <%= f.label :genre %><br />
+    <%= f.text_field :genre %>
+  </div>
+
+  <div class="field">
+  <%= f.label :publisher %><br />
+    <%= f.text_field :publisher %>
+  </div>
+
+  <div class="field">
+  <%= f.label :player_count %><br />
+    <%= f.text_field :player_count %>
+  </div>
+
+  <div class="field">
+  <%= f.label :duration, "Duration (in minutes)" %><br />
+    <%= f.number_field :duration %>
+  </div>
+
+  <div class="field">
+  <%= f.label :msrp, "Price (format xxx.xx)" %><br />
+    <%= f.number_field :msrp %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Save changes" %>
+  </div>
+<% end %>
+
+<% if @errors %>
+  <ul>
+    <% @errors.each do |error| %>
+    <li><%= error %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<br>
+<%= link_to "Delete Game", boardgame_path(@boardgame), method: :delete, data: { confirm: 'Are you certain you want to delete this?' } %>

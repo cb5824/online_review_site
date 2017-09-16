@@ -22,18 +22,26 @@ ActiveRecord::Schema.define(version: 20170914004702) do
     t.text "player_count"
     t.integer "duration"
     t.decimal "msrp", precision: 6, scale: 2
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_boardgames_on_user_id"
   end
 
   create_table "reviews", force: :cascade do |t|
     t.integer "rating", null: false
     t.text "comment"
     t.integer "review_score", default: 0
+    t.datetime "created_at"
+    t.bigint "user_id"
+    t.bigint "boardgame_id"
+    t.index ["boardgame_id"], name: "index_reviews_on_boardgame_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "username", default: "default", null: false
     t.string "encrypted_password", default: "", null: false
+    t.string "role", default: "user", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"

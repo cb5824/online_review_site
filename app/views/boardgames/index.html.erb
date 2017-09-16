@@ -1,0 +1,10 @@
+<h1>Boardgame Dweeb</h1>
+<br>
+<%= button_to "Add a game!", { :action => "new" }, :method => :get %>
+<ul>
+  <% @boardgames.each do |boardgame| %>
+    <div class='boardgame'>
+      <li><a href= <%=boardgame_path(boardgame) %>><%= boardgame.title %></a> Submitted by: <%= boardgame.user.username %></li>
+    </div>
+  <% end %>
+</ul>
