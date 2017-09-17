@@ -8,3 +8,33 @@
   <li>Submitted by: <%= @boardgame.user.username %></li>
 </ul>
 <a href=<%= edit_boardgame_path %>>Edit this game</a>
+<br>
+
+<%= form_for [@boardgame, @review] do |f| %>
+
+  <div class='field'>
+    <%= f.label :rating %><br />
+    <% scores = [[0,0],[1,1],[2,2],[3,3],[4,4],[5,5],[6,6],[7,7],[8,8],[9,9],[10,10]] %>
+    <%= f.select :rating, scores %>
+  </div>
+
+  <div class="field">
+    <%= f.label :comment %><br />
+    <%= f.text_field :comment %>
+  </div>
+
+  <div class="actions">
+  <%= f.submit %>
+  </div>
+
+<% end %>
+
+<h2>Reviews for this game:</h2>
+<% @reviews.each do |review| %>
+  <div class='review'>
+  <h4><%= review.user.username %>'s Rating: <%= review.rating %></h4>
+  <p><%= review.comment %><p>
+  <% if review.user = current_user %>
+    <a href=<%= edit_boardgame_review_path(@boardgame, review) %>>Edit this review</a>
+  <% end %>
+<% end %>

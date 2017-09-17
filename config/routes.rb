@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
   resources :boardgames do
-    resources :reviews, only: [:index, :new, :create]
+    resources :reviews
   end
 
   resources :reviews, only: [:show]

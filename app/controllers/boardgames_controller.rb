@@ -1,6 +1,8 @@
 require 'pry'
 class BoardgamesController < ApplicationController
 
+  before_action :authenticate_user!, except: [:index, :show]
+
   def index
     @boardgames = Boardgame.all
   end
