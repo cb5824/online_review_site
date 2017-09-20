@@ -43,8 +43,13 @@ class ReviewsController < ApplicationController
   def destroy
     @review = Review.find(params[:id])
     @boardgame = @review.boardgame
-    @review.destroy
-    redirect_to @boardgame
+    user = current_user
+    if user == @review.user || user.role == 'admin'
+      @review.destroy
+      redirect_to @boardgame, notice: 'Review deleted'
+    else
+      redirect_to edit_boardgame_review_path, notice: 'You must be the original user or have admin privileges to delete this review'
+    end
   end
 
   private

@@ -6,6 +6,7 @@ describe 'Reviews' do
   # I want to see all the reviews ofr a boardgame
   # So I can have other people's opinions
   scenario 'A user views existing reviews on an item' do
+    sign_in_user
     game = FactoryGirl.create(:boardgame)
     review = FactoryGirl.create(:review, boardgame_id: game.id)
 
@@ -73,6 +74,7 @@ describe 'Reviews' do
     click_link('Delete review')
 
     expect(page).to_not have_content('Love it, one of my favs')
+    expect(page).to have_content('Review deleted')
   end
 
 

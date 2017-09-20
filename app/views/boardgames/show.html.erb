@@ -8,6 +8,9 @@
   <li>Submitted by: <%= @boardgame.user.username %></li>
 </ul>
 <a href=<%= edit_boardgame_path %>>Edit this game</a>
+<% if @user != nil && @user.role == 'admin' %>
+<%= link_to "Delete this game", boardgame_path(@boardgame), method: :delete, data: { confirm: 'Are you certain you want to delete this?' } %>
+<% end %>
 <br>
 
 <%= form_for [@boardgame, @review] do |f| %>
@@ -34,7 +37,10 @@
   <div class='review'>
   <h4><%= review.user.username %>'s Rating: <%= review.rating %></h4>
   <p><%= review.comment %><p>
-  <% if review.user = current_user %>
+  <% if review.user == @user %>
     <a href=<%= edit_boardgame_review_path(@boardgame, review) %>>Edit this review</a>
+  <% end %>
+  <% if @user != nil && @user.role == 'admin' %>
+  <%= link_to "Delete review", boardgame_review_path(@boardgame, review), method: :delete, data: { confirm: 'Are you certain you want to delete this?' } %>
   <% end %>
 <% end %>

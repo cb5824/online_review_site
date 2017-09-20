@@ -4,7 +4,11 @@ class BoardgamesController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
 
   def index
-    @boardgames = Boardgame.all
+    if params[:search] && params[:search] != ''
+      @boardgames = Boardgame.search(params[:search])
+    else
+      @boardgames = Boardgame.all
+    end
   end
 
   def new
@@ -27,6 +31,7 @@ class BoardgamesController < ApplicationController
     @review = Review.new
     @boardgame = Boardgame.find(params[:id])
     @reviews = @boardgame.reviews.order('created_at desc')
+    @user = current_user
   end
 
   def update
