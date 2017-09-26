@@ -52,6 +52,20 @@ class ReviewsController < ApplicationController
     end
   end
 
+  def count_votes
+    @review = Review.find(params[:id])
+    votes =Vote.where(review_id: @review.id)
+    total = 0
+    votes.each do |vote|
+      if vote.vote_score
+        total += 1
+      else
+        total -= 1
+      end
+    end
+    total
+  end
+
   private
 
   def review_params

@@ -12,3 +12,23 @@
 //
 //= require rails-ujs
 //= require_tree .
+
+votes = document.getElementsByClassName("upvote_review");
+
+
+for (var i=0;i<votes.length;i++){
+  votes[i].addEventListener('click', function() {
+    let vote = { review_id: this.dataset.reviewId, vote_score: true, user_id: this.dataset.userId }
+    let request = $.ajax({
+      method: 'POST',
+      url: this.dataset.url,
+      data: vote
+    })
+
+    request.done((count) => {
+
+    alert(count); //test alert
+
+    })
+  });
+}

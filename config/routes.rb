@@ -8,7 +8,11 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-      resources :reviews, only: [:index, :show, :create]
+      resources :votes do
+        collection do
+          post 'create_or_destroy'
+        end
+      end
     end
   end
   root to: "homes#index"

@@ -1,6 +1,8 @@
 <h1>Boardgame Dweeb</h1>
 <br>
+<div id='add-game'>
 <%= button_to "Add a game!", { :action => "new" }, :method => :get %>
+</div>
 <ul>
   <% @boardgames.each do |boardgame| %>
     <div class='boardgame'>

@@ -13,3 +13,76 @@
  *= require_tree .
  *= require_self
  */
+
+nav{
+  background-color: #6f7891;
+  text-align: left;
+}
+
+nav ul li{
+  display: inline;
+  padding-right: 20px;
+}
+
+#search-form{
+  padding-left: 10px;
+}
+
+#enter{
+  margin-top: 50px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  font-size: 30pt;
+}
+
+body{
+  background-color:#556;
+  background-image: linear-gradient(30deg, #445 12%, transparent 12.5%, transparent 87%, #445 87.5%, #445),
+  linear-gradient(150deg, #445 12%, transparent 12.5%, transparent 87%, #445 87.5%, #445),
+  linear-gradient(30deg, #445 12%, transparent 12.5%, transparent 87%, #445 87.5%, #445),
+  linear-gradient(150deg, #445 12%, transparent 12.5%, transparent 87%, #445 87.5%, #445),
+  linear-gradient(60deg, #99a 25%, transparent 25.5%, transparent 75%, #99a 75%, #99a),
+  linear-gradient(60deg, #99a 25%, transparent 25.5%, transparent 75%, #99a 75%, #99a);
+  background-size:80px 140px;
+  background-position: 0 0, 0 0, 40px 70px, 40px 70px, 0 0, 40px 70px;
+  color: #ffffff;
+  text-align: center;
+  display: block;
+}
+
+a{
+  color: #26bad9;
+}
+
+ul{
+  list-style: none;
+}
+
+.boardgame, #game-data, .review, #new_review, .edit_block{
+  border-style: solid;
+  border-width: medium;
+  background-color: #6f7891;
+  padding: 10px;
+  text-align: left;
+  margin-left: auto;
+  margin-right: auto;
+  width: 600px;
+}
+
+body h1, #add-game{
+  margin-left: auto;
+  margin-right: auto;
+  width: 600px;
+
+}
+
+#new_review, .edit_block{
+  text-align: center;
+}
+
+#review_comment{
+  width: 500px;
+  height: 50px;
+}
